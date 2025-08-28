@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Krishna Prasad | Portfolio</title>
+  <meta name="description" content="Portfolio of S.N.V.M. Krishna Prasad Vakacharla — B.Sc in Artificial Intelligence. Projects, skills, experience, and contact." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230ea5e9'/%3E%3Ctext x='50' y='60' font-size='48' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3EK%3C/text%3E%3C/svg%3E"/>
+  <style>
+    /* ===== CSS Reset (modern, lightweight) ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --bg: #0b1220;
+      --card: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --accent: #38bdf8;
+      --ring: 0 0 0 3px rgba(56,189,248,.35);
+      --border: rgba(148,163,184,.2);
+      --gradient: radial-gradient(1200px 600px at 10% -20%, rgba(56,189,248,.20), transparent 40%),
+                  radial-gradient(1000px 600px at 90% -10%, rgba(16,185,129,.16), transparent 40%);
+    }
+    :root.light {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #475569;
+      --text: #0f172a;
+      --accent: #0ea5e9;
+      --ring: 0 0 0 3px rgba(14,165,233,.35);
+      --border: rgba(2,6,23,.08);
+      --gradient: radial-gradient(1200px 600px at 10% -20%, rgba(14,165,233,.16), transparent 40%),
+                  radial-gradient(1000px 600px at 90% -10%, rgba(5,150,105,.12), transparent 40%);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,"Noto Sans", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; letter-spacing: .2px; 
+      background-image: var(--gradient);
+      background-attachment: fixed;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items:center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
+    .brand { display:flex; align-items:center; gap:.6rem; font-weight: 700; letter-spacing:.3px; }
+    .brand .logo { width: 36px; height: 36px; display:grid; place-items:center; border-radius: 12px; background: linear-gradient(135deg, var(--accent), #16a34a); color: white; font-weight:900; }
+    .nav a { opacity:.9; }
+    .menu { display:flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border:1px solid var(--border); border-radius: 999px; background: color-mix(in oklab, var(--card) 85%, transparent); color: var(--text); text-decoration:none; }
+    .btn:hover { box-shadow: var(--ring); }
+
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; padding: 3.2rem 0; }
+    .chip { display:inline-flex; gap:.5rem; align-items:center; padding:.35rem .7rem; border: 1px solid var(--border); border-radius: 999px; font-size:.9rem; color: var(--muted); }
+    h1 { font-size: clamp(2rem, 1.7rem + 1.6vw, 3rem); line-height:1.15; margin:.6rem 0 1rem; }
+    .subtitle { font-size: 1.05rem; color: var(--muted); }
+    .card { background: color-mix(in oklab, var(--card) 92%, transparent); border:1px solid var(--border); border-radius: 18px; padding: 1rem; }
+
+    .grid { display:grid; gap: 1rem; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .section { padding: 2.2rem 0; }
+    .section h2 { font-size: 1.6rem; margin: 0 0 .8rem; }
+    .muted { color: var(--muted); }
+
+    .tag { font-size:.9rem; border:1px solid var(--border); padding:.35rem .6rem; border-radius: 999px; }
+    .tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+
+    .timeline { position: relative; }
+    .timeline::before { content:""; position:absolute; left: 12px; top: .2rem; bottom: .2rem; width:2px; background: var(--border); }
+    .t-item { position:relative; padding-left: 2.2rem; margin: .8rem 0; }
+    .t-bullet { position:absolute; left:4px; top:.35rem; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 15%, transparent); }
+
+    .project { display:flex; gap: 1rem; }
+    .project .thumb { width: 120px; height: 86px; border-radius: 12px; background: linear-gradient(135deg, color-mix(in oklab, var(--accent) 35%, transparent), color-mix(in oklab, #16a34a 28%, transparent)); border:1px solid var(--border); display:grid; place-items:center; font-weight:700; opacity:.9; }
+
+    .resume-embed { width: 100%; height: 520px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--card); }
+
+    footer { padding: 2rem 0 3rem; color: var(--muted); display:flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+    .switch { border:1px solid var(--border); border-radius: 999px; padding:.25rem; display:inline-flex; gap:.25rem; background: color-mix(in oklab, var(--card) 85%, transparent); }
+    .switch button { border:0; padding:.5rem .8rem; border-radius: 999px; cursor:pointer; color: var(--muted); background: transparent; }
+    .switch button[aria-pressed="true"] { background: var(--accent); color: white; }
+
+    .kbd { border:1px solid var(--border); border-bottom-width: 3px; padding: .15rem .4rem; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .85rem; }
+
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .project .thumb { width: 100px; height: 72px; }
+    }
+  </style>
+  <script>
+    // ===== Theme persistence =====
+    const applyTheme = (t) => {
+      const root = document.documentElement;
+      if (t === 'light') root.classList.add('light'); else root.classList.remove('light');
+      localStorage.setItem('theme', t);
+      // Update pressed states
+      requestAnimationFrame(() => {
+        document.querySelectorAll('[data-themebtn]')?.forEach(b => b.setAttribute('aria-pressed', b.dataset.themebtn === t));
+      });
+    };
+    const loadTheme = () => {
+      const saved = localStorage.getItem('theme');
+      const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      applyTheme(saved || prefers);
+    };
+    document.addEventListener('DOMContentLoaded', loadTheme);
+  </script>
+  <!-- SEO: Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "S.N.V.M. Krishna Prasad Vakacharla",
+    "jobTitle": "Student — B.Sc in Artificial Intelligence",
+    "address": {"@type": "PostalAddress", "addressLocality": "Kakinada", "addressRegion": "Andhra Pradesh", "addressCountry": "IN"},
+    "email": "mailto:krishnaprasadvakacharla@gmail.com",
+    "telephone": "+91-8977786353",
+    "url": "#",
+    "sameAs": ["https://linkedin.com/in/krishna-prasad-vakacharla"]
+  }
+  </script>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo">K</div>
+        <div>Krishna Prasad</div>
+      </div>
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+        <span class="switch" role="group" aria-label="Theme switcher">
+          <button data-themebtn="dark" aria-pressed="false" onclick="applyTheme('dark')">Dark</button>
+          <button data-themebtn="light" aria-pressed="false" onclick="applyTheme('light')">Light</button>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="container hero">
+    <div>
+      <span class="chip">🎓 B.Sc in Artificial Intelligence · Final Year</span>
+      <h1>Hi, I'm <span style="background:linear-gradient(90deg,var(--accent),#16a34a);-webkit-background-clip:text;background-clip:text;color:transparent">S.N.V.M. Krishna Prasad Vakacharla</span></h1>
+      <p class="subtitle">Quick-learning developer with strong problem-solving skills. I love building efficient, reliable software and data solutions. Currently seeking opportunities to contribute and grow.</p>
+      <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn" href="#contact">Hire Me</a>
+        <a class="btn" href="#resume">Download CV</a>
+      </div>
+      <p class="muted" style="margin-top:1rem">Tip: Press <span class="kbd">D</span>/<span class="kbd">L</span> to toggle Dark/Light.</p>
+    </div>
+    <div class="card">
+      <div class="grid grid-2">
+        <div>
+          <div class="muted">Location</div>
+          <div>Kakinada, Andhra Pradesh</div>
+        </div>
+        <div>
+          <div class="muted">Email</div>
+          <a href="mailto:krishnaprasadvakacharla@gmail.com">krishnaprasadvakacharla@gmail.com</a>
+        </div>
+        <div>
+          <div class="muted">Phone</div>
+          <a href="tel:+918977786353">+91 89777 86353</a>
+        </div>
+        <div>
+          <div class="muted">LinkedIn</div>
+          <a href="https://linkedin.com/in/krishna-prasad-vakacharla" target="_blank" rel="noopener">linkedin.com/in/krishna-prasad-vakacharla</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="card">
+        <p>Final-year B.Sc student specializing in Artificial Intelligence at Aditya Degree College, Kakinada. Skilled in C, Python, MongoDB, and DBMS with hands-on project experience. Passionate about building practical ML-powered systems and clear, insightful dashboards. Strong collaborator, fast learner, and ready to contribute in dynamic teams.</p>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Programming</h3>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">C</span>
+            <span class="tag">Java</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Databases</h3>
+          <div class="tags">
+            <span class="tag">SQL</span>
+            <span class="tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Technologies</h3>
+          <div class="tags">
+            <span class="tag">AI & ML</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="card project">
+        <div class="thumb">ML + IoT</div>
+        <div>
+          <h3>Wet & Dry Waste Segregation System</h3>
+          <p class="muted">A sensor-based machine learning system that classifies wet vs dry waste and routes it into bins using actuators and conveyors.</p>
+          <div class="tags">
+            <span class="tag">Sensors</span>
+            <span class="tag">ML Classification</span>
+            <span class="tag">Embedded</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div class="card timeline">
+        <div class="t-item">
+          <div class="t-bullet" aria-hidden="true"></div>
+          <h3>Data Analytics Intern · ULearn</h3>
+          <p class="muted">• Cleaned and transformed datasets using DAX · Created interactive dashboards in Power BI · Built real-time dashboards from public datasets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Aditya Degree College, Kakinada</h3>
+          <p class="muted">B.Sc in Artificial Intelligence</p>
+        </div>
+        <div class="card">
+          <h3>Aditya Jr College, Kakinada</h3>
+          <p class="muted">MPC - Intermediate</p>
+        </div>
+        <div class="card">
+          <h3>Sri Chaitanya School, Gaigolupadu</h3>
+          <p class="muted">SSC</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS & LANGUAGES ===== -->
+    <section class="section">
+      <div class="grid grid-2">
+        <div class="card">
+          <h2>Certifications</h2>
+          <ul>
+            <li>Python Certification</li>
+            <li>Cisco C Programming</li>
+            <li>Cisco Python Essentials 1 & 2</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Languages</h2>
+          <p>English, Telugu</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESUME (Embed/Download) ===== -->
+    <section id="resume" class="section">
+      <h2>Resume</h2>
+      <div class="resume-embed">
+        <!-- Replace the src with your deployed PDF path -->
+        <iframe title="Resume PDF" src="krish%20resume.pdf" style="width:100%;height:100%" loading="lazy"></iframe>
+      </div>
+      <p style="margin-top:.8rem">
+        <a class="btn" href="krish%20resume.pdf" download>⬇️ Download PDF</a>
+      </p>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>I'm open to internships and entry-level roles in software, AI/ML, and data analytics. The fastest way to reach me is email.</p>
+        <p>Email: <a href="mailto:krishnaprasadvakacharla@gmail.com">krishnaprasadvakacharla@gmail.com</a> · Phone: <a href="tel:+918977786353">+91 89777 86353</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/krishna-prasad-vakacharla" target="_blank" rel="noopener">/krishna-prasad-vakacharla</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>© <span id="y"></span> Krishna Prasad</div>
+    <div class="muted">Built with vanilla HTML/CSS/JS · Dark/Light Mode</div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Keyboard shortcut: D / L to toggle theme
+    document.addEventListener('keydown', (e) => {
+      if (['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+      if (e.key.toLowerCase() === 'd') applyTheme('dark');
+      if (e.key.toLowerCase() === 'l') applyTheme('light');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
